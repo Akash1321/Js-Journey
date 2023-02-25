@@ -13,4 +13,76 @@ function fetchData(url) {
     })
 };
 
-fetchData("www.google.com");
+function writeData(data){
+    return new Promise(function(resolve, reject){
+        console.log(`started saving the ${data} in a file`);
+        setTimeout(function saveFile(){
+           let fileName = "firstTime.txt";
+           resolve(fileName)
+        }, 2000)
+    })
+}
+
+function uploadFile(fileName, site){
+    return new Promise(function(resolve, reject){
+        console.log(`started uploading ${fileName} to ${site}`);
+        setTimeout(function uploading(){
+            let show = `the file ${fileName} is uploaded to ${site}`;
+            resolve(show)
+            console.log("this was the end")
+        }, 4000)
+    })
+}
+
+fetchData("www.google.com")
+.then(value => {
+    console.log("the data was", value);
+    return value
+})
+.then(data => {
+    return writeData(data);
+})
+.then(job => {
+    console.log(job);
+    return uploadFile(job);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function resolveReject(num){
+//    return new Promise(function(resolve, reject){
+//     console.log("inside the promise");
+//     setTimeout(function process(){
+//         console.log("Calcutlation done")
+//         if(num % 5 == 0){
+//             resolve("Multiple of 5")
+//         }else{
+//             reject("Not a multiple of 5")
+//         }
+//     }, 10000)
+
+//     console.log("we are somewhere in the middle")
+//    })
+// }
