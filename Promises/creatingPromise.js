@@ -44,8 +44,9 @@ fetchData("www.google.com")
 })
 .then(job => {
     console.log(job);
-    return uploadFile(job);
+    return uploadFile(job, "www.youtube.com");
 })
+.then(show => console.log(show))
 
 
 
